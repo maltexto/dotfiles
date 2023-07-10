@@ -9,11 +9,6 @@ export XDG_RUNTIME_DIR='/run/user/$(id -u)'
 # Add .local/bin to path
 export PATH="$PATH:/home/$USER/.local/bin"
 
-# ==ALIAS==
-alias ls='ls --color=auto'
-alias vboxmanage='VBoxManage'
-
-
 # ==GIT==
 function parse_git_dirty {
   [[ $(git status 2> /dev/null | tail -n1 | cut -c 1-17) != "nothing to commit" ]] && echo "*"
@@ -35,3 +30,10 @@ CYAN='\e[0;36m'
 RESET='\[\e[0m\]'
 
 PS1="${MAGENTA}\u ${WHITE}at ${YELLOW}\h ${WHITE}in ${LIGHT_RED}\w${WHITE}\$([[ -n \$(git branch 2> /dev/null) ]] && echo \" on \")${PURPLE}\$(parse_git_branch)${WHITE}\n\$ ${RESET}"
+
+# ==ALIAS==
+alias ls='ls --color=auto'
+alias vm='VBoxManage'
+alias ss="handle_screen_session"
+alias lss="screen -ls"
+
