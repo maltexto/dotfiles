@@ -31,6 +31,20 @@ RESET='\[\e[0m\]'
 
 PS1="${MAGENTA}\u ${WHITE}at ${YELLOW}\h ${WHITE}in ${LIGHT_RED}\w${WHITE}\$([[ -n \$(git branch 2> /dev/null) ]] && echo \" on \")${PURPLE}\$(parse_git_branch)${WHITE}\n\$ ${RESET}"
 
+# ==GNU Screen==
+handle_screen_session() {
+    session_name=$1
+    if [ -z "$session_name" ]; then
+        read -p "screen session name: " session_name
+    fi
+    session_id=$(screen -ls | awk -v name="$session_name" '$1 ~ /^[0-9]{4}\.'"$session_name"'$/ {print $1; exit}')
+    if [ -n "$session_id" ]; then
+        screen -r "$session_id"
+    else
+        screen -S "$session_name"
+    fi
+}
+
 # ==ALIAS==
 alias ls='ls --color=auto'
 alias vm='VBoxManage'
