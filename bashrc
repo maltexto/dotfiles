@@ -3,6 +3,9 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
+#set XDG_RUNTIME_DIR
+export XDG_RUNTIME_DIR='/run/user/$(id -u)'
+
 # Add .local/bin to path
 export PATH="$PATH:/home/$USER/.local/bin"
 
