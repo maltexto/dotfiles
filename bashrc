@@ -4,7 +4,7 @@
 [[ $- != *i* ]] && return
 
 #set XDG_RUNTIME_DIR
-export XDG_RUNTIME_DIR='/run/user/$(id -u)'
+#export XDG_RUNTIME_DIR='/run/user/$(id -u)'
 
 # Add .local/bin to path
 export PATH="$PATH:/home/$USER/.local/bin"
@@ -45,9 +45,16 @@ handle_screen_session() {
     fi
 }
 
+# ==SDKMAN==
+export SDKMAN_DIR="$HOME/.sdkman"
+[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
+
+# ==OPAM==
+test -r $HOME/.opam/opam-init/init.sh && . $HOME/.opam/opam-init/init.sh > /dev/null 2> /dev/null || true
+
 # ==ALIAS==
 alias ls='ls --color=auto'
 alias vm='VBoxManage'
 alias ss="handle_screen_session"
 alias lss="screen -ls"
-
+alias ocaml="rlwrap ocaml"
