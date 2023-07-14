@@ -4,7 +4,7 @@
 [[ $- != *i* ]] && return
 
 #set XDG_RUNTIME_DIR
-#export XDG_RUNTIME_DIR='/run/user/$(id -u)'
+export XDG_RUNTIME_DIR='/run/user/$(id -u)'
 
 # Add .local/bin to path
 export PATH="$PATH:/home/$USER/.local/bin"
@@ -51,6 +51,12 @@ export SDKMAN_DIR="$HOME/.sdkman"
 
 # ==OPAM==
 test -r $HOME/.opam/opam-init/init.sh && . $HOME/.opam/opam-init/init.sh > /dev/null 2> /dev/null || true
+
+# ==NVM==
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
+
 
 # ==ALIAS==
 alias ls='ls --color=auto'
