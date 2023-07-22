@@ -4,7 +4,7 @@
 [[ $- != *i* ]] && return
 
 #set XDG_RUNTIME_DIR
-export XDG_RUNTIME_DIR='/run/user/$(id -u)'
+#export XDG_RUNTIME_DIR='/run/user/$(id -u)'
 
 # Add .local/bin to path
 export PATH="$PATH:/home/$USER/.local/bin"
@@ -58,9 +58,14 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
 
 
+# ==GO==
+export PATH=$PATH:$HOME/.local/go/bin 
+export GOPATH=$HOME/workspace/go
+export PATH=$PATH:$GOPATH/bin
+
 # ==ALIAS==
-alias ls='ls --color=auto'
-alias vm='VBoxManage'
+alias ls="ls --color=auto"
+alias vm="VBoxManage"
 alias ss="handle_screen_session"
 alias lss="screen -ls"
 alias ocaml="rlwrap ocaml"
