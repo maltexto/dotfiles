@@ -63,6 +63,13 @@ export PATH=$PATH:$HOME/.local/go/bin
 export GOPATH=$HOME/workspace/go
 export PATH=$PATH:$GOPATH/bin
 
+# ==LISP==
+export SBCL_HOME=$HOME/.local/sbcl
+
+# ==DENO==
+export DENO_INSTALL="$HOME/.deno"
+export PATH="$DENO_INSTALL/bin:$PATH"
+
 # ==ALIAS==
 alias ls="ls --color=auto"
 alias vm="VBoxManage"
