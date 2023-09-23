@@ -64,7 +64,8 @@ export GOPATH=$HOME/workspace/go
 export PATH=$PATH:$GOPATH/bin
 
 # ==LISP==
-export SBCL_HOME=$HOME/.local/sbcl
+export SBCL_HOME="$HOME/.local/sbcl"
+export PATH="$SBCL_HOME/bin:$PATH"
 
 # ==DENO==
 export DENO_INSTALL="$HOME/.deno"
