@@ -1,0 +1,3 @@
+#!/bin/sh
+
+xwallpaper --stretch $WALLPPR_PATH
