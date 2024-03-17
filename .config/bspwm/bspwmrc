@@ -1,9 +1,6 @@
 #!/bin/sh
 
-AUTOLOAD="$(pwd)/scripts"
-
-source $AUTOLOAD/sxhkd
-source $AUTOLOAD/abnt2
+pgrep -x sxhkd > /dev/null || sxhkd &
 
 bspc config border_width         1
 bspc config window_gap          12
@@ -14,4 +11,3 @@ bspc config gapless_monocle      true
 
 bspc monitor HDMI-A-0 -d 0 1 2 3
 bspc monitor eDP -d 4 5
-

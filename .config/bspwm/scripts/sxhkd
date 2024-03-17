@@ -1,2 +1,0 @@
-echo a
-#pgrep -x sxhkd > /dev/null || sxhkd &
