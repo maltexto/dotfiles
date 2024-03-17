@@ -1,0 +1,6 @@
+# ==
+
+alias ls="ls --color=auto"
+alias gemi="gem install --env-shebang"
+alias lss="screen -ls"
+alias ocaml="rlwrap ocaml"
