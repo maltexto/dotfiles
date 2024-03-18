@@ -1,9 +1,17 @@
 return {
-  "neovim/nvim-lspconfig",
-  config = function()
-  local lspconfig = require("lspconfig")
 
-    lspconfig.lua_ls.setup({
+  "neovim/nvim-lspconfig",
+
+  config = function()
+
+    local completions = require('cmp_nvim_lsp').default_capabilities
+
+    local lsp = require("lspconfig")
+
+    lsp.lua_ls.setup({
+
+      capabilities = completions,
+
       settings = {
         Lua = {
           diagnostics = {
@@ -14,9 +22,9 @@ return {
       },
     })
 
-
     vim.keymap.set('n', 'lh', vim.lsp.buf.hover, {})
     vim.keymap.set('n','ld',vim.lsp.buf.definition, {})
-    vim.keymap.set({'n', 'v'}, 'ca',vim.lsp.buf.code_action , {})
+    vim.keymap.set({'n', 'v'}, 'lca',vim.lsp.buf.code_action , {})
+
   end
 }
