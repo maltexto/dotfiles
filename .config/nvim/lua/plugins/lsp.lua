@@ -22,6 +22,14 @@ return {
       },
     })
 
+    lsp.ruff_lsp.setup({
+      capabilities = completions
+    })
+
+    lsp.rust_analyzer.setup({
+      capabilities = completions
+    })
+
     vim.keymap.set('n', 'lh', vim.lsp.buf.hover, {})
     vim.keymap.set('n','ld',vim.lsp.buf.definition, {})
     vim.keymap.set({'n', 'v'}, 'lca',vim.lsp.buf.code_action , {})
