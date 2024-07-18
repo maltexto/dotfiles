@@ -10,25 +10,29 @@ return {
 
     lsp.lua_ls.setup({
 
---      capabilities = completions,
-
       settings = {
         Lua = {
           diagnostics = {
-            -- Get the language server to recognize the `vim` global
+            -- language server recognize the `vim` global
             globals = {'vim'},
           },
         },
       },
     })
 
---    lsp.ruff_lsp.setup({
---      capabilities = completions
---    })
+    lsp.ruff_lsp.setup({
+      capabilities = completions
+    })
 
---    lsp.rust_analyzer.setup({
---      capabilities = completions
---    })
+    lsp.rust_analyzer.setup({
+      settings = {
+        ['rust-analyzer'] = {
+          diagnostics = {
+            enable = false;
+          }
+        }
+      }
+    })
 
     vim.keymap.set('n', 'lh', vim.lsp.buf.hover, {})
     vim.keymap.set('n','ld',vim.lsp.buf.definition, {})
