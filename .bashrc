@@ -33,9 +33,8 @@ RESET='\[\e[0m\]'
 
 PS1="${MAGENTA}\u ${WHITE}at ${YELLOW}\h ${WHITE}in ${LIGHT_RED}\w${WHITE}\$([[ -n \$(git branch 2> /dev/null) ]] && echo \" on \")${PURPLE}\$(parse_git_branch)${WHITE}\n\$ ${RESET}"
 
-# ==SDKMAN==
-export SDKMAN_DIR="$HOME/.sdkman"
-[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
+# ==COURSIER==
+export PATH="$PATH:/home/maltexto/.local/share/coursier/bin"
 
 # ==OPAM==
 test -r $HOME/.opam/opam-init/init.sh && source $HOME/.opam/opam-init/init.sh > /dev/null 2> /dev/null || true
