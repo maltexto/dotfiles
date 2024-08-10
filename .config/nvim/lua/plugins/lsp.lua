@@ -34,6 +34,8 @@ return {
       }
     })
 
+    lsp.gopls.setup({})
+
     vim.keymap.set('n', 'lh', vim.lsp.buf.hover, {})
     vim.keymap.set('n','ld',vim.lsp.buf.definition, {})
     vim.keymap.set({'n', 'v'}, 'lca',vim.lsp.buf.code_action , {})
