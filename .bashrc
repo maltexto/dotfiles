@@ -67,3 +67,17 @@ source /usr/local/share/chruby/auto.sh
 
 # ==GHCUP==
 [ -f "$HOME/.ghcup/env" ] && source "$HOME/.ghcup/env"
+
+# ==ZELLIJ==
+if [[ -z "$ZELLIJ" ]]; then
+
+  if [[ "$ZELLIJ_AUTO_ATTACH" == "true" ]]; then
+    zellij attach -c
+  else
+    zellij
+  fi
+
+  if [[ "$ZELLIJ_AUTO_EXIT" == "true" ]]; then
+    exit
+  fi
+fi
