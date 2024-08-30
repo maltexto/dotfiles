@@ -1,10 +1,15 @@
-# ==
-
 alias ls="lsd --almost-all"
 alias la="lsd --all"
+
 alias gemi="gem install --env-shebang"
 alias ocaml="rlwrap ocaml"
+
 alias cat="bat"
+
 alias ..="cd .."
+alias ,,="cd .."
+
 alias ff="git diff"
 alias gs="git status"
+
+alias sum="sudo xbps-install -SuM"
