@@ -49,18 +49,10 @@ export GOMODCACHE=$HOME/.local/bin/gomodcache
 export PATH=$PATH:$GOBIN
 
 # ==RUSTUP==
-[ -f "$HOME/.cargo/env"] && source "$HOME/.cargo/env"
+[ -f "$HOME/.cargo/env" ] && source "$HOME/.cargo/env"
 
 # ==GHCUP==
-[ -f "$HOME/.ghcup/env"] && source "$HOME/.ghcup/env"
+[ -f "$HOME/.ghcup/env" ] && source "$HOME/.ghcup/env"
 
 # ==ALIAS==
-[ -f "$HOME/.alias"] && source $HOME/.alias
-
-
-
-
-# ==JAVA==
-export JAVA_HOME="$HOME/.cache/coursier/arc/https/github.com/adoptium/temurin17-binaries/releases/download/jdk-17%252B35/OpenJDK17-jdk_x64_linux_hotspot_17_35.tar.gz/jdk-17+35"
-export CS_FORMER_JAVA_HOME="$JAVA_HOME"
-export PATH="$JAVA_HOME/bin:$PATH"
+[ -f "$HOME/.alias" ] && source "$HOME/.alias"
