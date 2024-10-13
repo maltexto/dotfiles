@@ -1,5 +1,5 @@
 alias ls="lsd --almost-all"
-alias la="lsd --all"
+alias la="lsd --all --long"
 
 alias gemi="gem install --env-shebang"
 alias ocaml="rlwrap ocaml"
@@ -13,3 +13,6 @@ alias ff="git diff"
 alias gs="git status"
 
 alias sum="sudo xbps-install -SuM"
+alias roo="sudo xbps-remove -Oo"
+alias npm="pnpm"
+alias npx="pnpx"
