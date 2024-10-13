@@ -3,9 +3,6 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
-# set XDG_RUNTIME_DIR
-# export XDG_RUNTIME_DIR='/run/user/$(id -u)'
-
 # ==GIT==
 function parse_git_dirty {
   [[ $(git status 2> /dev/null | tail -n1 | cut -c 1-17) != "nothing to commit" ]] && echo "*"
@@ -28,11 +25,14 @@ RESET='\[\e[0m\]'
 
 PS1="${MAGENTA}\u ${WHITE}at ${YELLOW}\h ${WHITE}in ${LIGHT_RED}\w${WHITE}\$([[ -n \$(git branch 2> /dev/null) ]] && echo \" on \")${PURPLE}\$(parse_git_branch)${WHITE}\n\$ ${RESET}"
 
+# ==XDG==
+export XDG_DATA_HOME="$HOME/.local/share"
+export XDG_CONFIG_HOME="$HOME/.config"
+export XDG_STATE_HOME="$HOME/.local/state"
+export XDG_CACHE_HOME="$HOME/.cache"
+
 # ==.LOCAL/BIN==
 export PATH="$PATH:$HOME/.local/bin"
-
-# ==COURSIER==
-export PATH="$PATH:$HOME/.local/share/coursier/bin"
 
 # ==DENO==
 export DENO_INSTALL="$HOME/.deno"
@@ -42,17 +42,16 @@ export PATH="$DENO_INSTALL/bin:$PATH"
 export VOLTA_HOME="$HOME/.volta"
 export PATH="$VOLTA_HOME/bin:$PATH"
 
-# ==GO==
-export PATH=$PATH:$HOME/.local/go/bin
-export GOBIN=$HOME/.local/bin/gobin
-export GOMODCACHE=$HOME/.local/bin/gomodcache
-export PATH=$PATH:$GOBIN
-
 # ==RUSTUP==
 [ -f "$HOME/.cargo/env" ] && source "$HOME/.cargo/env"
 
 # ==GHCUP==
 [ -f "$HOME/.ghcup/env" ] && source "$HOME/.ghcup/env"
 
+# ==SDKMAN==
+export SDKMAN_DIR="$HOME/.sdkman"
+[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
+
 # ==ALIAS==
 [ -f "$HOME/.alias" ] && source "$HOME/.alias"
+. "/home/maltexto/.deno/env"
