@@ -35,8 +35,7 @@ export XDG_CACHE_HOME="$HOME/.cache"
 export PATH="$PATH:$HOME/.local/bin"
 
 # ==DENO==
-export DENO_INSTALL="$HOME/.deno"
-export PATH="$DENO_INSTALL/bin:$PATH"
+[ -f "$HOME/.deno/env" ] && source "$HOME/.deno/env"
 
 # ==VOLTA==
 export VOLTA_HOME="$HOME/.volta"
@@ -54,4 +53,3 @@ export SDKMAN_DIR="$HOME/.sdkman"
 
 # ==ALIAS==
 [ -f "$HOME/.alias" ] && source "$HOME/.alias"
-. "/home/maltexto/.deno/env"
