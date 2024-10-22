@@ -1,7 +1,20 @@
 # .bashrc
 
-# If not running interactively, don't do anything
+# if not running interactively, don't do anything
 [[ $- != *i* ]] && return
+
+# don't put duplicate lines or lines starting with space in the history.
+HISTCONTROL=ignoreboth
+
+HISTSIZE=1000
+HISTFILESIZE=2000
+
+# append to the history file, don't overwrite it
+shopt -s histappend
+
+# check the window size after each command and, if necessary,
+# update the values of LINES and COLUMNS.
+shopt -s checkwinsize
 
 # ==GIT==
 function parse_git_dirty {
@@ -12,18 +25,24 @@ function parse_git_branch {
   git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e "s/* \(.*\)/\1$(parse_git_dirty)/"
 }
 
-# ==PS1==
-MAGENTA='\033[35m'
-PURPLE='\e[0;35m'
-GREEN='\e[0;32m'
-WHITE='\e[1;37m'
-YELLOW='\e[1;33m'
-LIGHT_RED='\e[1;31m'
-BLUE='\e[0;34m'
-CYAN='\e[0;36m'
-RESET='\[\e[0m\]'
+# ==VENV==
+function venvname {
+  if [[ -n "$VIRTUAL_ENV" ]]; then
+    echo "($(basename "$VIRTUAL_ENV")) "
+  fi
+}
 
-PS1="${MAGENTA}\u ${WHITE}at ${YELLOW}\h ${WHITE}in ${LIGHT_RED}\w${WHITE}\$([[ -n \$(git branch 2> /dev/null) ]] && echo \" on \")${PURPLE}\$(parse_git_branch)${WHITE}\n\$ ${RESET}"
+# ==PS1==
+MAGENTA='\[\033[35m\]'
+GREEN='\[\033[0;32m\]'
+WHITE='\[\033[1;37m\]'
+YELLOW='\[\033[1;33m\]'
+LIGHT_RED='\[\033[1;31m\]'
+BLUE='\[\033[0;34m\]'
+CYAN='\[\033[0;36m\]'
+RESET='\[\033[0m\]'
+
+PS1="$(venvname) ${MAGENTA}\u ${WHITE}at ${YELLOW}\h ${WHITE}in ${LIGHT_RED}\w${WHITE}\$([[ -n \$(git branch 2> /dev/null) ]] && echo \" on \")${PURPLE}\$(parse_git_branch)${WHITE}\n\$ ${RESET}"
 
 # ==XDG==
 export XDG_DATA_HOME="$HOME/.local/share"
@@ -35,21 +54,21 @@ export XDG_CACHE_HOME="$HOME/.cache"
 export PATH="$PATH:$HOME/.local/bin"
 
 # ==DENO==
-[ -f "$HOME/.deno/env" ] && source "$HOME/.deno/env"
+[[ -s "$HOME/.deno/env" ]] && source "$HOME/.deno/env"
 
 # ==VOLTA==
 export VOLTA_HOME="$HOME/.volta"
 export PATH="$VOLTA_HOME/bin:$PATH"
 
-# ==RUSTUP==
-[ -f "$HOME/.cargo/env" ] && source "$HOME/.cargo/env"
+# 🦀
+[[ -s "$HOME/.cargo/env" ]] && source "$HOME/.cargo/env"
 
 # ==GHCUP==
-[ -f "$HOME/.ghcup/env" ] && source "$HOME/.ghcup/env"
+[[ -s "$HOME/.ghcup/env" ]] && source "$HOME/.ghcup/env"
 
-# ==SDKMAN==
+# ah shit, here we go again
 export SDKMAN_DIR="$HOME/.sdkman"
 [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
 
 # ==ALIAS==
-[ -f "$HOME/.alias" ] && source "$HOME/.alias"
+[[ -s "$HOME/.alias" ]] && source "$HOME/.alias"
