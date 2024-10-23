@@ -53,6 +53,9 @@ export XDG_CACHE_HOME="$HOME/.cache"
 # ==.LOCAL/BIN==
 export PATH="$PATH:$HOME/.local/bin"
 
+# ==GO==
+export PATH=$PATH:/usr/local/go/bin
+
 # ==DENO==
 [[ -s "$HOME/.deno/env" ]] && source "$HOME/.deno/env"
 
