@@ -16,6 +16,11 @@ shopt -s histappend
 # update the values of LINES and COLUMNS.
 shopt -s checkwinsize
 
+# ==autocomplete==
+if [ -f /etc/bash_completion ]; then
+    . /etc/bash_completion
+fi
+
 # ==GIT==
 function parse_git_dirty {
   [[ $(git status 2> /dev/null | tail -n1 | cut -c 1-17) != "nothing to commit" ]] && echo "*"
@@ -72,6 +77,13 @@ export PATH="$VOLTA_HOME/bin:$PATH"
 # ah shit, here we go again
 export SDKMAN_DIR="$HOME/.sdkman"
 [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
+
+# ==uv==
+eval "$(uv generate-shell-completion bash)"
+eval "$(uvx --generate-shell-completion bash)"
+
+# ==JetBrains==
+export PATH="$PATH:/home/maltexto/.local/share/JetBrains/Toolbox/scripts"
 
 # ==ALIAS==
 [[ -s "$HOME/.alias" ]] && source "$HOME/.alias"

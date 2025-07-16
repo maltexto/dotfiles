@@ -11,8 +11,3 @@ alias ,,="cd .."
 
 alias ff="git diff"
 alias gs="git status"
-
-alias sum="sudo xbps-install -SuM"
-alias roo="sudo xbps-remove -Oo"
-alias npm="pnpm"
-alias npx="pnpx"
