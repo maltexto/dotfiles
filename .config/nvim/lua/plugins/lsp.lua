@@ -20,7 +20,7 @@ return {
       },
     })
 
-    lsp.ruff_lsp.setup({
+    lsp.ruff.setup({
       capabilities = completions
     })
 
