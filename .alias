@@ -1,18 +1,13 @@
+# .alias
+
+alias cat="bat"
 alias ls="lsd --almost-all"
 alias la="lsd --all --long"
 
-alias gemi="gem install --env-shebang"
 alias ocaml="rlwrap ocaml"
+alias gemi="gem install --env-shebang"
 
-alias cat="bat"
+alias i="sudo xbps-install"
+alias u="sudo xbps-install -Su"
+alias r="sudo xbps-remove -Oo"
 
-alias ..="cd .."
-alias ,,="cd .."
-
-alias ff="git diff"
-alias gs="git status"
-
-alias sum="sudo xbps-install -SuM"
-alias roo="sudo xbps-remove -Oo"
-alias npm="pnpm"
-alias npx="pnpx"
