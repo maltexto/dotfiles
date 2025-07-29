@@ -1,5 +1,7 @@
+
 local set = vim.opt
 
+set.cmdheight = 0
 set.encoding = "utf8"
 set.cursorline = true
 set.number = true
