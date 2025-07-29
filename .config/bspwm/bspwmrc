@@ -11,7 +11,8 @@ bspc config gapless_monocle      true
 
 HDMI="$(cat /sys/class/drm/card0/*HDMI*/status | grep '^connected')"
 if [ -z $HDMI ]; then
-  bspc monitor eDP -d 0 1 2 3 4
+bspc monitor eDP-1 -d 0 1 2 3 4
+
 else
   bspc monitor HDMI-A-0 -d 0 1 2 3 4
   bspc monitor eDP -d 5 6
