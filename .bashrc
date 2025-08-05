@@ -120,20 +120,20 @@ export XDG_CACHE_HOME="$HOME/.cache"
 # .local/bin
 export PATH="$PATH:$HOME/.local/bin"
 
-# ==DENO==
+# Deno
 [[ -s "$HOME/.deno/env" ]] && source "$HOME/.deno/env"
 DENO_COMPLETION="$XDG_DATA_HOME/bash-completion/completions/deno.bash"
 [[ -s $DENO_COMPLETION ]] && source $DENO_COMPLETION
 
-# 🦀
+# Rust
 [[ -s "$HOME/.cargo/env" ]] && source "$HOME/.cargo/env"
 
-# ==GHCUP==
-[[ -s "$HOME/.ghcup/env" ]] && source "$HOME/.ghcup/env"
+# Go
+export GOROOT="$HOME/.local/share/go"
+export GOPATH="$HOME/.local/go"
+export GOBIN="$HOME/.local/bin"
+export PATH="$GOROOT/bin:$GOBIN:$PATH"
 
-# ah shit, here we go again
-export SDKMAN_DIR="$HOME/.sdkman"
-[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
-
-# ==ALIAS==
+# alias
 [[ -s "$HOME/.alias" ]] && source "$HOME/.alias"
+

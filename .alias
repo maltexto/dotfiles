@@ -1,6 +1,7 @@
 # .alias
 
 alias cat="bat"
+alias vim="nvim"
 alias ls="lsd --almost-all"
 alias la="lsd --all --long"
 
@@ -10,4 +11,3 @@ alias gemi="gem install --env-shebang"
 alias i="sudo xbps-install"
 alias u="sudo xbps-install -Su"
 alias r="sudo xbps-remove -Oo"
-
