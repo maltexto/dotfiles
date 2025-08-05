@@ -2,11 +2,11 @@
 size = 12.0
 
 [font.normal]
-family = "hack-with-emoji"
+family = "Hack Nerd Font Mono"
 style = "Regular"
 
 [font.bold]
-family = "hack-with-emoji"
+family = "Hack Nerd Font Mono"
 style = "Bold"
 
 [colors.primary]
