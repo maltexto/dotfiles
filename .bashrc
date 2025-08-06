@@ -120,19 +120,23 @@ export XDG_CACHE_HOME="$HOME/.cache"
 # .local/bin
 export PATH="$PATH:$HOME/.local/bin"
 
-# Deno
+# DENO
 [[ -s "$HOME/.deno/env" ]] && source "$HOME/.deno/env"
 DENO_COMPLETION="$XDG_DATA_HOME/bash-completion/completions/deno.bash"
 [[ -s $DENO_COMPLETION ]] && source $DENO_COMPLETION
 
-# Rust
+# RUST
 [[ -s "$HOME/.cargo/env" ]] && source "$HOME/.cargo/env"
 
-# Go
+# GO
 export GOROOT="$HOME/.local/share/go"
 export GOPATH="$HOME/.local/go"
 export GOBIN="$HOME/.local/bin"
 export PATH="$GOROOT/bin:$GOBIN:$PATH"
+
+# JVM
+export JAVA_HOME="$HOME/.cache/coursier/arc/https/github.com/adoptium/temurin21-binaries/releases/download/jdk-21.0.7%252B6/OpenJDK21U-jdk_x64_linux_hotspot_21.0.7_6.tar.gz/jdk-21.0.7+6"
+export PATH="$PATH:$JAVA_HOME/bin"
 
 # alias
 [[ -s "$HOME/.alias" ]] && source "$HOME/.alias"
