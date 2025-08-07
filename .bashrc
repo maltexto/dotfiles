@@ -135,8 +135,10 @@ export GOBIN="$HOME/.local/bin"
 export PATH="$GOROOT/bin:$GOBIN:$PATH"
 
 # JVM
-export JAVA_HOME="$HOME/.cache/coursier/arc/https/github.com/adoptium/temurin21-binaries/releases/download/jdk-21.0.7%252B6/OpenJDK21U-jdk_x64_linux_hotspot_21.0.7_6.tar.gz/jdk-21.0.7+6"
-export PATH="$PATH:$JAVA_HOME/bin"
+[[ -d "$XDG_DATA_HOME/coursier/bin" ]] && export PATH="$PATH:$XDG_DATA_HOME/coursier/bin"
+[[ -s "$HOME/.local/bin/setup_java.sh" ]] && source "$HOME/.local/bin/setup_java.sh"
+setup_java
+[[ -n "$JAVA_HOME" && -d "$JAVA_HOME/bin" ]] && export PATH="$PATH:$JAVA_HOME/bin"
 
 # alias
 [[ -s "$HOME/.alias" ]] && source "$HOME/.alias"
