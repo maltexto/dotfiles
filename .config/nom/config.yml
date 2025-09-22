@@ -1,0 +1,18 @@
+configpath: ~/.config/nom/config.yml
+version: ""
+feeds:
+    - url: https://github.com/void-linux/void-packages/commits/master.atom
+      name: void-packages
+database: nom.db
+ordering: asc
+filtering:
+    defaultIncludeFeedName: false
+theme:
+    glamour: dark
+    titleColor: "62"
+    titleColorFg: "231"
+    filterColor: "62"
+    selectedItemColor: "170"
+    readIcon: ✓
+http:
+    mintls: TLS 1.2

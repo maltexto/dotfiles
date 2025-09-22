@@ -8,8 +8,8 @@ alias ss="shotgun -g \"\$(slop -f \"%g\")\""
 alias iv="nsxiv"
 
 alias ocaml="rlwrap ocaml"
-alias gemi="gem install --env-shebang"
 
-alias i="sudo xbps-install"
-alias u="sudo xbps-install -Su"
-alias r="sudo xbps-remove -Oo"
+alias gi="gem install --env-shebang"
+alias xi="sudo xbps-install"
+alias xu="sudo xbps-install -Su"
+alias xr="sudo xbps-remove -Oo"

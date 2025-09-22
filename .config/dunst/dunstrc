@@ -1,7 +1,4 @@
-# dunst(5) for all configuration options
-
 [global]
-    ### Display ###
 
     # Which monitor should the notifications be displayed on.
     monitor = 0
@@ -17,7 +14,7 @@
     #
     # If this option is set to mouse or keyboard, the monitor option
     # will be ignored.
-    follow = none
+    follow = mouse
 
     ### Geometry ###
 
@@ -30,7 +27,7 @@
     height = 300
 
     # Position the notification in the top right corner
-    origin = top-right
+    origin = top-left
 
     # Offset from the origin
     offset = 15x49
