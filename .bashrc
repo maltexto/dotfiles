@@ -141,5 +141,5 @@ setup_java
 [[ -n "$JAVA_HOME" && -d "$JAVA_HOME/bin" ]] && export PATH="$PATH:$JAVA_HOME/bin"
 
 # alias
-[[ -s "$HOME/.alias" ]] && source "$HOME/.alias"
+[[ -s "$HOME/.bash_aliases" ]] && source "$HOME/.bash_aliases"
 
