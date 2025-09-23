@@ -27,8 +27,20 @@ bind "set completion-map-case on"
 # display matches for ambiguous patterns at first tab press
 bind "set show-all-if-ambiguous on"
 
+# show all completions immediately if nothing has been typed
+bind "set show-all-if-unmodified on"
+
 # immediately add a trailing slash when autocompleting symlinks to directories
 bind "set mark-symlinked-directories on"
+
+# highlight the matching prefix in completions
+bind "set colored-completion-prefix on"
+
+# use colors to indicate file types in completions
+bind "set colored-stats on"
+
+# limit completion display width (-1 = use terminal width)
+bind "set completion-display-width -1"
 
 # history config
 
@@ -43,7 +55,7 @@ PROMPT_COMMAND='history -a'
 
 # huge history. doesn't appear to slow things down, so why not?
 HISTSIZE=500000
-HISTFILESIZE=100000
+HISTFILESIZE=500000
 
 # avoid duplicate entries
 HISTCONTROL="erasedups:ignoreboth"
@@ -63,7 +75,6 @@ bind '"\e[C": forward-char'
 bind '"\e[D": backward-char'
 
 # better cd nav
-
 # prepend cd to directory names automatically
 shopt -s autocd 2> /dev/null
 # correct spelling errors during tab-completion
@@ -74,29 +85,27 @@ shopt -s cdspell 2> /dev/null
 # this defines where cd looks for targets
 # add the directories you want to have fast access to, separated by colon
 # ex: CDPATH=".:~:~/projects" will look for targets in the current working directory, in home and in the ~/projects folder
-# CDPATH="."
+CDPATH=".:~:~/workspace"
 
 # this allows you to bookmark your favorite places across the file system
 # define a variable containing a path and you will be able to cd into it regardless of the directory you're in
 # shopt -s cdable_vars
 
-
 # ps1
-#
-function parse_git_dirty {
-  [[ $(git status 2> /dev/null | tail -n1 | cut -c 1-17) != "nothing to commit" ]] && echo "*"
-}
+# load git prompt (official git script)
+source /usr/share/git/git-prompt.sh
 
-function parse_git_branch {
-  git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e "s/* \(.*\)/\1$(parse_git_dirty)/"
-}
+# git prompt configuration
+export GIT_PS1_SHOWDIRTYSTATE=1       # show * for dirty, + for staged
+export GIT_PS1_SHOWSTASHSTATE=1       # show $ if stash exists
+export GIT_PS1_SHOWUNTRACKEDFILES=1   # show % for untracked files
+export GIT_PS1_SHOWUPSTREAM="auto"    # show upstream differences
 
 function venvname {
   if [[ -n "$VIRTUAL_ENV" ]]; then
     echo "($(basename "$VIRTUAL_ENV")) "
   fi
 }
-
 
 MAGENTA='\[\033[35m\]'
 GREEN='\[\033[0;32m\]'
@@ -107,7 +116,7 @@ BLUE='\[\033[0;34m\]'
 CYAN='\[\033[0;36m\]'
 RESET='\[\033[0m\]'
 
-PS1="$(venvname) ${MAGENTA}\u ${WHITE}at ${YELLOW}\h ${WHITE}in ${LIGHT_RED}\w${WHITE}\$([[ -n \$(git branch 2> /dev/null) ]] && echo \" on \")${PURPLE}\$(parse_git_branch)${WHITE}\n\$ ${RESET}"
+PS1="\$(venvname)${MAGENTA}\u ${WHITE}at ${YELLOW}\h ${WHITE}in ${LIGHT_RED}\w${WHITE}\$(__git_ps1 \" on ${MAGENTA}%s${WHITE}\")${WHITE}\n\$ ${RESET}"
 
 # xdg
 # export XDG_RUNTIME_DIR="/run/user/$(id -u)"
