@@ -2,7 +2,7 @@ local set = vim.opt
 
 -- Basic settings
 set.number = true                              -- Line numbers
-set.relativenumber = true                      -- Relative line numbers
+set.relativenumber = false                     -- Relative line numbers
 set.cursorline = true                          -- Highlight current line
 set.wrap = false                               -- Don't wrap lines
 set.scrolloff = 10                             -- Keep 10 lines above/below cursor 

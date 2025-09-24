@@ -23,6 +23,7 @@ return {
       -- completion and navigation
       usePlaceholders = true,                         -- use placeholders in completion snippets
       completeUnimported = true,                      -- complete symbols from unimported packages
+      completionDocumentation = true,                 -- show documentation in completions
       semanticTokens = true,                          -- enable semantic syntax highlighting
 
       -- code lenses (inline action buttons)
