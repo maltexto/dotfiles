@@ -32,17 +32,17 @@ local function mode_icon()
     i = "INSERT",
     v = "VISUAL",
     V = "V-LINE",
-    ["\22"] = "V-BLOCK",  -- Ctrl-V
+    ["\22"] = "V-BLOCK",
     c = "COMMAND",
     s = "SELECT",
     S = "S-LINE",
-    ["\19"] = "S-BLOCK",  -- Ctrl-S
+    ["\19"] = "S-BLOCK",
     R = "REPLACE",
     r = "REPLACE",
     ["!"] = "SHELL",
     t = "TERMINAL"
   }
-  return modes[mode] or "  " .. mode:upper()
+  return modes[mode] or mode:upper()
 end
 
 _G.git_branch = git_branch
@@ -52,24 +52,34 @@ _G.mode_icon = mode_icon
 -- powerline colors
 local function setup_highlights()
   -- mode colors
-  vim.api.nvim_set_hl(0, "StatusLineModeNormal", { fg = "#1c1c1c", bg = "#98c379", bold = true })
-  vim.api.nvim_set_hl(0, "StatusLineModeInsert", { fg = "#1c1c1c", bg = "#61afef", bold = true })
-  vim.api.nvim_set_hl(0, "StatusLineModeVisual", { fg = "#1c1c1c", bg = "#c678dd", bold = true })
-  vim.api.nvim_set_hl(0, "StatusLineModeCommand", { fg = "#1c1c1c", bg = "#e06c75", bold = true })
-  vim.api.nvim_set_hl(0, "StatusLineModeReplace", { fg = "#1c1c1c", bg = "#d19a66", bold = true })
-  vim.api.nvim_set_hl(0, "StatusLineModeSelect", { fg = "#1c1c1c", bg = "#56b6c2", bold = true })
-  vim.api.nvim_set_hl(0, "StatusLineModeTerminal", { fg = "#1c1c1c", bg = "#98c379", bold = true })
+  vim.api.nvim_set_hl(0, "StatusLineModeNORMAL", { fg = "#1c1c1c", bg = "#98c379", bold = true })
+  vim.api.nvim_set_hl(0, "StatusLineModeINSERT", { fg = "#1c1c1c", bg = "#61afef", bold = true })
+  vim.api.nvim_set_hl(0, "StatusLineModeVISUAL", { fg = "#1c1c1c", bg = "#c678dd", bold = true })
+  vim.api.nvim_set_hl(0, "StatusLineModeV-LINE", { fg = "#1c1c1c", bg = "#c678dd", bold = true })
+  vim.api.nvim_set_hl(0, "StatusLineModeV-BLOCK", { fg = "#1c1c1c", bg = "#c678dd", bold = true })
+  vim.api.nvim_set_hl(0, "StatusLineModeCOMMAND", { fg = "#1c1c1c", bg = "#e06c75", bold = true })
+  vim.api.nvim_set_hl(0, "StatusLineModeREPLACE", { fg = "#1c1c1c", bg = "#d19a66", bold = true })
+  vim.api.nvim_set_hl(0, "StatusLineModeSELECT", { fg = "#1c1c1c", bg = "#56b6c2", bold = true })
+  vim.api.nvim_set_hl(0, "StatusLineModeS-LINE", { fg = "#1c1c1c", bg = "#56b6c2", bold = true })
+  vim.api.nvim_set_hl(0, "StatusLineModeS-BLOCK", { fg = "#1c1c1c", bg = "#56b6c2", bold = true })
+  vim.api.nvim_set_hl(0, "StatusLineModeSHELL", { fg = "#1c1c1c", bg = "#e06c75", bold = true })
+  vim.api.nvim_set_hl(0, "StatusLineModeTERMINAL", { fg = "#1c1c1c", bg = "#98c379", bold = true })
 
   -- section colors
   vim.api.nvim_set_hl(0, "StatusLineSection", { fg = "#abb2bf", bg = "#3e4452" })
   vim.api.nvim_set_hl(0, "StatusLineSeparator", { fg = "#3e4452", bg = "NONE" })
-  vim.api.nvim_set_hl(0, "StatusLineModeSeparatorNormal", { fg = "#98c379", bg = "#3e4452" })
-  vim.api.nvim_set_hl(0, "StatusLineModeSeparatorInsert", { fg = "#61afef", bg = "#3e4452" })
-  vim.api.nvim_set_hl(0, "StatusLineModeSeparatorVisual", { fg = "#c678dd", bg = "#3e4452" })
-  vim.api.nvim_set_hl(0, "StatusLineModeSeparatorCommand", { fg = "#e06c75", bg = "#3e4452" })
-  vim.api.nvim_set_hl(0, "StatusLineModeSeparatorReplace", { fg = "#d19a66", bg = "#3e4452" })
-  vim.api.nvim_set_hl(0, "StatusLineModeSeparatorSelect", { fg = "#56b6c2", bg = "#3e4452" })
-  vim.api.nvim_set_hl(0, "StatusLineModeSeparatorTerminal", { fg = "#98c379", bg = "#3e4452" })
+  vim.api.nvim_set_hl(0, "StatusLineModeSeparatorNORMAL", { fg = "#98c379", bg = "#3e4452" })
+  vim.api.nvim_set_hl(0, "StatusLineModeSeparatorINSERT", { fg = "#61afef", bg = "#3e4452" })
+  vim.api.nvim_set_hl(0, "StatusLineModeSeparatorVISUAL", { fg = "#c678dd", bg = "#3e4452" })
+  vim.api.nvim_set_hl(0, "StatusLineModeSeparatorV-LINE", { fg = "#c678dd", bg = "#3e4452" })
+  vim.api.nvim_set_hl(0, "StatusLineModeSeparatorV-BLOCK", { fg = "#c678dd", bg = "#3e4452" })
+  vim.api.nvim_set_hl(0, "StatusLineModeSeparatorCOMMAND", { fg = "#e06c75", bg = "#3e4452" })
+  vim.api.nvim_set_hl(0, "StatusLineModeSeparatorREPLACE", { fg = "#d19a66", bg = "#3e4452" })
+  vim.api.nvim_set_hl(0, "StatusLineModeSeparatorSELECT", { fg = "#56b6c2", bg = "#3e4452" })
+  vim.api.nvim_set_hl(0, "StatusLineModeSeparatorS-LINE", { fg = "#56b6c2", bg = "#3e4452" })
+  vim.api.nvim_set_hl(0, "StatusLineModeSeparatorS-BLOCK", { fg = "#56b6c2", bg = "#3e4452" })
+  vim.api.nvim_set_hl(0, "StatusLineModeSeparatorSHELL", { fg = "#e06c75", bg = "#3e4452" })
+  vim.api.nvim_set_hl(0, "StatusLineModeSeparatorTERMINAL", { fg = "#98c379", bg = "#3e4452" })
 
   -- right section colors
   vim.api.nvim_set_hl(0, "StatusLineRight", { fg = "#abb2bf", bg = "#3e4452" })
@@ -80,14 +90,14 @@ end
 local function setup_dynamic_statusline()
   setup_highlights()
 
-  vim.api.nvim_create_autocmd({"WinEnter", "BufEnter"}, {
+  vim.api.nvim_create_autocmd({"WinEnter", "BufEnter", "ModeChanged"}, {
     callback = function()
       local mode_text = mode_icon()
       vim.opt_local.statusline = table.concat {
         -- left section: mode
-        "%#StatusLineModeNormal#",
+        "%#StatusLineMode" .. mode_text .. "#",
         " " .. mode_text .. " ",
-        "%#StatusLineModeSeparatorNormal#",
+        "%#StatusLineModeSeparator" .. mode_text .. "#",
         separators.right,
 
         -- left section: file info
