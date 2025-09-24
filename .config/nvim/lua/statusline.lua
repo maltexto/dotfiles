@@ -49,7 +49,6 @@ _G.git_branch = git_branch
 _G.lsp_status = lsp_status
 _G.mode_icon = mode_icon
 
--- powerline colors
 local function setup_highlights()
   -- mode colors
   vim.api.nvim_set_hl(0, "StatusLineModeNORMAL", { fg = "#1c1c1c", bg = "#98c379", bold = true })
@@ -86,7 +85,6 @@ local function setup_highlights()
   vim.api.nvim_set_hl(0, "StatusLineRightSeparator", { fg = "#3e4452", bg = "NONE" })
 end
 
--- function to change statusline based on window focus
 local function setup_dynamic_statusline()
   setup_highlights()
 
