@@ -7,28 +7,6 @@ local function git_branch()
   return ""
 end
 
--- File type with icon
-local function file_type()
-  local ft = vim.bo.filetype
-  local icons = {
-    lua = "[LUA]",
-    python = "[PY]",
-    javascript = "[JS]",
-    html = "[HTML]",
-    css = "[CSS]",
-    json = "[JSON]",
-    markdown = "[MD]",
-    vim = "[VIM]",
-    sh = "[SH]",
-  }
-
-  if ft == "" then
-    return "  "
-  end
-
-  return (icons[ft] or ft)
-end
-
 -- LSP status
 local function lsp_status()
   local clients = vim.lsp.get_clients({ bufnr = 0 })
@@ -36,29 +14,6 @@ local function lsp_status()
     return "  LSP "
   end
   return ""
-end
-
--- Word count for text files
-local function word_count()
-  local ft = vim.bo.filetype
-  if ft == "markdown" or ft == "text" or ft == "tex" then
-    local words = vim.fn.wordcount().words
-    return "  " .. words .. " words "
-  end
-  return ""
-end
-
--- File size
-local function file_size()
-  local size = vim.fn.getfsize(vim.fn.expand('%'))
-  if size < 0 then return "" end
-  if size < 1024 then
-    return size .. "B "
-  elseif size < 1024 * 1024 then
-    return string.format("%.1fK", size / 1024)
-  else
-    return string.format("%.1fM", size / 1024 / 1024)
-  end
 end
 
 -- Mode indicators with icons
@@ -84,8 +39,6 @@ end
 
 _G.mode_icon = mode_icon
 _G.git_branch = git_branch
-_G.file_type = file_type
-_G.file_size = file_size
 _G.lsp_status = lsp_status
 
 vim.cmd([[
