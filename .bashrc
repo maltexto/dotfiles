@@ -91,21 +91,15 @@ CDPATH=".:~:~/workspace"
 # define a variable containing a path and you will be able to cd into it regardless of the directory you're in
 # shopt -s cdable_vars
 
-# ps1
-# load git prompt (official git script)
-source /usr/share/git/git-prompt.sh
-
+# PS1
+# load git prompt 'official git script'
+[[ -s /usr/share/git/git-prompt.sh ]] && source /usr/share/git/git-prompt.sh
+[[ -s /usr/lib/git-core/git-sh-prompt ]] && source /usr/lib/git-core/git-sh-prompt  # debian-like 
 # git prompt configuration
 export GIT_PS1_SHOWDIRTYSTATE=1       # show * for dirty, + for staged
 export GIT_PS1_SHOWSTASHSTATE=1       # show $ if stash exists
 export GIT_PS1_SHOWUNTRACKEDFILES=1   # show % for untracked files
 export GIT_PS1_SHOWUPSTREAM="auto"    # show upstream differences
-
-function venvname {
-  if [[ -n "$VIRTUAL_ENV" ]]; then
-    echo "($(basename "$VIRTUAL_ENV")) "
-  fi
-}
 
 MAGENTA='\[\033[35m\]'
 GREEN='\[\033[0;32m\]'
@@ -116,7 +110,7 @@ BLUE='\[\033[0;34m\]'
 CYAN='\[\033[0;36m\]'
 RESET='\[\033[0m\]'
 
-PS1="\$(venvname)${MAGENTA}\u ${WHITE}at ${YELLOW}\h ${WHITE}in ${LIGHT_RED}\w${WHITE}\$(__git_ps1 \" on ${MAGENTA}%s${WHITE}\")${WHITE}\n\$ ${RESET}"
+PS1="${MAGENTA}\u ${WHITE}at ${YELLOW}\h ${WHITE}in ${LIGHT_RED}\w${WHITE}\$(__git_ps1 \" on ${MAGENTA}%s${WHITE}\")${WHITE}\n\$ ${RESET}"
 
 # xdg
 # export XDG_RUNTIME_DIR="/run/user/$(id -u)"
@@ -146,7 +140,6 @@ export PATH="$GOROOT/bin:$GOBIN:$PATH"
 # JVM
 [[ -d "$XDG_DATA_HOME/coursier/bin" ]] && export PATH="$PATH:$XDG_DATA_HOME/coursier/bin"
 [[ -s "$HOME/.local/bin/setup_java.sh" ]] && source "$HOME/.local/bin/setup_java.sh"
-setup_java
 [[ -n "$JAVA_HOME" && -d "$JAVA_HOME/bin" ]] && export PATH="$PATH:$JAVA_HOME/bin"
 
 # alias
