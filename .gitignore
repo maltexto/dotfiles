@@ -1,3 +1,15 @@
-.config/glib-2.0/
 .config/mimeapps.list
+.config/glib-2.0/
+.config/go/
+.config/gtk-3.0/
+.config/gtk-4.0/
+.config/htop
+.config/menus/
+.config/nicotine/
+.config/PCSX2/
 .config/pulse/
+.config/uv/
+.config/VSCodium/
+.config/chromium/
+.config/glow/
+.config/nom/nom.db
