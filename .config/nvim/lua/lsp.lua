@@ -46,3 +46,43 @@ vim.diagnostic.config({
     current_line = true,
   },
 })
+
+-- sync lsp when file is reloaded from disk
+-- this fixes the issue where external changes don't update lsp state
+vim.api.nvim_create_autocmd(
+  {'FileChangedShellPost', 'BufReadPost'},
+  {
+    callback = function(event)
+      -- get all lsp clients attached to this buffer
+      local clients = vim.lsp.get_clients({ bufnr = event.buf })
+
+      if #clients > 0 then
+        -- notify each client about the buffer change
+        -- this forces lsp to resync with the file content
+        local buf_lines = vim.api.nvim_buf_get_lines(event.buf, 0, -1, false)
+        local content = table.concat(buf_lines, '\n')
+
+        for _, client in ipairs(clients) do
+          -- send didChange notification with full document content
+          vim.schedule(function()
+            vim.api.nvim_buf_call(event.buf, function()
+              vim.lsp.buf_notify(
+                event.buf,
+                'textDocument/didChange',
+                {
+                  textDocument = {
+                    uri = vim.uri_from_bufnr(event.buf),
+                    version = vim.lsp.util.buf_versions[event.buf] or 0,
+                  },
+                  contentChanges = {
+                    { text = content }
+                  }
+                }
+              )
+            end)
+          end)
+        end
+      end
+    end,
+  }
+)

@@ -128,8 +128,15 @@ export PATH="$PATH:$HOME/.local/bin"
 DENO_COMPLETION="$XDG_DATA_HOME/bash-completion/completions/deno.bash"
 [[ -s $DENO_COMPLETION ]] && source $DENO_COMPLETION
 
+# NODE
+export N_PREFIX="$HOME/.local/share/n"
+[[ -d "$N_PREFIX/bin" ]] && export PATH="$PATH:$N_PREFIX/bin"
+
 # RUST
 [[ -s "$HOME/.cargo/env" ]] && source "$HOME/.cargo/env"
+
+# OCAML
+[[ -s "$HOME/.opam/opam-init/init.sh" ]] && source "$HOME/.opam/opam-init/init.sh"
 
 # GO
 export GOROOT="$HOME/.local/share/go"
@@ -144,4 +151,5 @@ export PATH="$GOROOT/bin:$GOBIN:$PATH"
 
 # alias
 [[ -s "$HOME/.bash_aliases" ]] && source "$HOME/.bash_aliases"
+
 

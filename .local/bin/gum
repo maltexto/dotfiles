@@ -1,0 +1,4 @@
+#!/bin/sh
+
+mkdir -p ~/imgs/screenshots
+shotgun -g "$(slop -f "%g")" ~/imgs/screenshots/screenshot-$(date +%Y%m%d-%H%M%S).png
