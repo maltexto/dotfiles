@@ -146,8 +146,7 @@ export PATH="$GOROOT/bin:$GOBIN:$PATH"
 
 # JVM
 [[ -d "$XDG_DATA_HOME/coursier/bin" ]] && export PATH="$PATH:$XDG_DATA_HOME/coursier/bin"
-[[ -s "$HOME/.local/bin/setup_java.sh" ]] && source "$HOME/.local/bin/setup_java.sh"
-[[ -n "$JAVA_HOME" && -d "$JAVA_HOME/bin" ]] && export PATH="$PATH:$JAVA_HOME/bin"
+[[ -x "$XDG_DATA_HOME/coursier/bin/cs" ]] && eval "$(cs java --env)"
 
 # alias
 [[ -s "$HOME/.bash_aliases" ]] && source "$HOME/.bash_aliases"
