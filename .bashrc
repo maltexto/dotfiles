@@ -146,7 +146,10 @@ export PATH="$GOROOT/bin:$GOBIN:$PATH"
 
 # JVM
 [[ -d "$XDG_DATA_HOME/coursier/bin" ]] && export PATH="$PATH:$XDG_DATA_HOME/coursier/bin"
-[[ -x "$XDG_DATA_HOME/coursier/bin/cs" ]] && eval "$(cs java --env)"
+[[ -x "$HOME/.local/bin/cs" ]] && eval "$(cs java --env)"
+
+# RUBY
+[[ -s "$XDG_DATA_HOME/chruby/chruby.sh" ]] && source "$XDG_DATA_HOME/chruby/chruby.sh"
 
 # alias
 [[ -s "$HOME/.bash_aliases" ]] && source "$HOME/.bash_aliases"
