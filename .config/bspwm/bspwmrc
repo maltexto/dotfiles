@@ -17,17 +17,19 @@ bspc config gapless_monocle      true
 is_hdmi_connected() {
     for card in /sys/class/drm/card*; do
         for hdmi in "$card"/*HDMI*/status; do
-            [ -f "$hdmi" ] && [ "$(cat "$hdmi" 2>/dev/null)" = "connected" ] && echo true && return
+            [ -f "$hdmi" ] || continue
+            read -r status < "$hdmi"
+            [ "$status" = "connected" ] && return 0
         done
     done
-    echo false
+    return 1
 }
 
-if [ "$(is_hdmi_connected)" = "true" ]; then
+if is_hdmi_connected; then
     bspc monitor HDMI-1 -d 0 1 2 3 4
-    bspc monitor eDP-1 -d 5 6
+    bspc monitor eDP-1 -d 5 6 7 8 9
 else
-    bspc monitor eDP-1 -d 0 1 2 3 4
+    bspc monitor eDP-1 -d 0 1 2 3 4 5 6 7 8 9
 fi
 
 bspc rule -a Dunst layer=above manage=off border=off

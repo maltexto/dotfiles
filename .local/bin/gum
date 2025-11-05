@@ -1,4 +1,5 @@
 #!/bin/sh
 
-mkdir -p ~/imgs/screenshots
-shotgun -g "$(slop -f "%g")" ~/imgs/screenshots/screenshot-$(date +%Y%m%d-%H%M%S).png
+screenshot_dir="$HOME/pics/screenshots"
+mkdir -p "$screenshot_dir"
+shotgun -g "$(slop -f "%g")" "$screenshot_dir/screenshot-$(date +%Y%m%d-%H%M%S).png" && notify-send "screenshot saved" "$screenshot_dir"
